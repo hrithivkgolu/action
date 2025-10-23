@@ -34,4 +34,4 @@ jobs:
           git commit --allow-empty -m "Daily commit from workflow $(date +'%Y-%m-%d %H:%M:%S')"
           
           # Push using token
-          git push https://x-access-token:$TOKEN@github.com/hrithivkgolu/IITM.git
+          git push https://x-access-token:$TOKEN@github.com/hrithivkgolu/action.git
