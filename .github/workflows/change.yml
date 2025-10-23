@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       # Create/Update daily_commit.txt and commit
-      - name: Commit daily file
+      - name: 24f2000717@ds.study.iitm.ac.in
         run: |
           # Assign GitHub token from secrets to a variable
           TOKEN=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
