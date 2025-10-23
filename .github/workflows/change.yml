@@ -1,0 +1,37 @@
+name: Daily Commit Workflow
+
+# Run daily at 10:15 IST (04:45 UTC)
+on:
+  schedule:
+    - cron: '45 4 * * *'  # 04:45 UTC daily
+  workflow_dispatch: # optional: allows manual trigger
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Create/Update daily_commit.txt and commit
+      - name: Commit daily file
+        run: |
+          # Assign GitHub token from secrets to a variable
+          TOKEN=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
+          
+          # Overwrite daily_commit.txt with email and timestamp
+          echo "24f2000717@ds.study.iitm.ac.in $(date +'%Y-%m-%d %H:%M:%S')" > daily_commit.txt
+          
+          # Configure git author
+          git config user.name "24f2000717@ds.study.iitm.ac.in"
+          git config user.email "24f2000717@ds.study.iitm.ac.in"
+          
+          # Stage changes
+          git add daily_commit.txt
+          
+          # Commit (allow empty commit if no changes)
+          git commit --allow-empty -m "Daily commit from workflow $(date +'%Y-%m-%d %H:%M:%S')"
+          
+          # Push using token
+          git push https://x-access-token:$TOKEN@github.com/hrithivkgolu/IITM.git
