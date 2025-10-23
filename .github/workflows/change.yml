@@ -18,7 +18,7 @@ jobs:
       - name: Commit daily file
         run: |
           # Assign GitHub token from secrets to a variable
-          TOKEN=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
+          TOKEN=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
           
           # Overwrite daily_commit.txt with email and timestamp
           echo "24f2000717@ds.study.iitm.ac.in $(date +'%Y-%m-%d %H:%M:%S')" > daily_commit.txt
